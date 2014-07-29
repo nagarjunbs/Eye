@@ -1,0 +1,16 @@
+{
+  "name": "Eye",
+  "version": "1.0.0",
+  "main": "path/to/main.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "jquery": "2.x",
+    "angular":"1.2.x",
+    "bootstrap":"3.x",
+    "font-awesome":"4.x",
+    "ace":"1.x"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Eye",
+  "description": "A chrome extension for web developers with an editor, and the most common utilities.",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "icons": { "16": "eye-16.png", "128": "eye-128.png" }
+}
