@@ -23,3 +23,15 @@ Libraries
 2. Angular
 3. Bootstrap
 4. Font-awesome
+
+
+Installation:
+============
+1. Checkout the code via any git client
+2. Install NodeJS
+2. Run "npm install bower" to get bower (add -g to install globally)
+3. Run "npm install grunt" to get grunt (add -g to install globally)
+4. To get all dependencies of this project, run "bower install" via command line
+5. To run the grunt tasks, run "grunt" via command line
+6. The sources are kept in the "src" directory while the deployable version is kept under the "dist" directory
+7. You are now ready to start hacking away
