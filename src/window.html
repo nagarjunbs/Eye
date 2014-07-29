@@ -23,21 +23,15 @@
         </div>
         <ul class="nav navbar-nav" ng-controller="eyeMenuCtrl">
           <li class="dropdown" ng-repeat="menu in menus">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{menu.name}} <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{menu.name}}</a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#" ng-repeat="menuItem in menu.children">{{menuItem.name}}</a></li>
+              <li ng-repeat="menuItem in menu.children">
+                <a href="#" ng-if="menuItem['type']=='menuitem' && menuItem['name']">{{menuItem.name}}</a>
+                <div ng-if="menuItem['type']=='seperator'" class="{{menuItem['type']}}"><hr/></div>
+              </li>
             </ul>
           </li>
         </ul>
-        <!--Menu Items-->
-        <!--<div class="navbar-collapse collapse" ng-controller="eyeMenuCtrl">-->
-        <!--  <ul class="nav navbar-nav">-->
-        <!--    <li ng-repeat="menu in menus"><a href="#">{{menu.name}}</a></li>-->
-        <!--  </ul>-->
-        <!--  <form class="navbar-form navbar-right">-->
-        <!--    <input type="text" class="form-control" placeholder="Search...">-->
-        <!--  </form>-->
-        <!--</div>-->
       </div>
     </div>
    <br/>
@@ -47,7 +41,7 @@
     
     <div class="container-fluid">
       <div class="row">
-         Left bar 
+         <!--Left bar -->
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
@@ -69,7 +63,7 @@
             <li><a href="">Another nav item</a></li>
           </ul>
         </div>
-         Editor area 
+         <!--Editor area -->
         <div class="col-sm-9">
           <h1 class="page-header">Dashboard</h1>
 

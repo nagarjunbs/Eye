@@ -1,13 +1,24 @@
 [
-  {"name": "File", "children":[{
-    "name":"New.."
-  },{
-    "name":"Open"
-  },{
-    "name":"Save"
-  },{
-    "name":"Save As..."
-  },{
-    "name":"Exit"
-  }]}
+  {"name": "File", 
+  "children":[{
+      "name":"New..",
+      "type":"menuitem"
+    },{
+      "name":"Open",
+      "type":"menuitem"
+    },{
+      "type":"seperator"
+    },{
+      "name":"Save",
+      "type":"menuitem"
+    },{
+      "name":"Save As...",
+      "type":"menuitem"
+    },{
+      "type":"seperator"
+    },{
+      "name":"Exit",
+      "type":"menuitem"
+    }
+  ]}
 ]
