@@ -6,9 +6,10 @@ A chrome extension for web developers with an editor, and the most common web de
 Planned features
 ================
 1. Will be built on top of ace
-2. Console access
+2. Console integration
 3. Project management and integration with bower & grunt
 4. Find and replace in file and project
+5. JSBeautifier, JSLint/JSHint integration
 
 Toolchain
 ==========
