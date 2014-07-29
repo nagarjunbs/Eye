@@ -26,8 +26,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{menu.name}}</a>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="menuItem in menu.children">
-                <a href="#" ng-if="menuItem['type']=='menuitem' && menuItem['name']" class="menu-{{menuItem['type']}}">{{menuItem.name}}</a>
+                <a href="#" ng-if="menuItem['type']=='menuitem' && menuItem['name']" class="menu-{{menuItem['type']}}"><i class="fa fa-{{menuItem['icon']}}"></i>&nbsp;&nbsp;&nbsp;{{menuItem.name}}</a>
                 <hr ng-if="menuItem['type']=='seperator'" class="menu-{{menuItem['type']}}"/>
+                
               </li>
             </ul>
           </li>

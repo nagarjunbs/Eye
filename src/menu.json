@@ -3,23 +3,28 @@
     "name": "File", 
     "children":[{
         "name":"New..",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"pencil"
       },{
         "name":"Open",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"file-text-o"
       },{
         "type":"seperator"
       },{
         "name":"Save",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"save"
       },{
         "name":"Save As...",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"save"
       },{
         "type":"seperator"
       },{
         "name":"Exit",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"sign-out"
       }
     ]
   },
@@ -27,30 +32,40 @@
     "name":"Edit",
     "children":[{
         "name":"Undo",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"undo"
       },{
         "type":"seperator"
       },{
         "name":"Cut",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"cut"
       },{
         "name":"Copy",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"copy"
       },{
         "name":"Paste",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"paste"
       }
     ]
   },{
     "name":"Help",
     "children":[{
+        "name":"Documentation",
+        "type":"menuitem",
+        "icon":"life-bouy"
+      },{
         "name":"Github",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"github"
       },{
         "type":"seperator"
       },{
         "name":"About",
-        "type":"menuitem"
+        "type":"menuitem",
+        "icon":"external-link"
       }
     ]
   }
