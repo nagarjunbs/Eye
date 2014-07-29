@@ -21,11 +21,12 @@ module.exports = function(grunt) {
               'bootstrap':'bootstrap/dist/*',
               
               // Font-Awesome
-              'font-awesome':'font-awesome/css/*',
+              'font-awesome/css':'font-awesome/css/*',
               'font-awesome/fonts':'font-awesome/fonts/*',
               
               // Ace-Builds
               'ace':'ace-builds/src-noconflict/*'
+              
             //For dist
           },
       },

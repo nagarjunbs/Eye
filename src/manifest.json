@@ -1,12 +1,24 @@
 {
   "name": "Eye",
-  "description": "A chrome extension for web developers with an editor, and the most common utilities.",
+  "description": "A chrome extension for web developers with an editor, and the most common web development utilities.",
   "version": "0.1",
   "manifest_version": 2,
   "app": {
     "background": {
-      "scripts": ["background.js"]
+      "scripts": [
+          "background.js",
+          "libs/angular/angular.js",
+          "libs/jquery/jquery.js",
+          "js/app.js"
+        ]
     }
   },
-  "icons": { "16": "eye-16.png", "128": "eye-128.png" }
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "icons": { 
+    "16": "eye-16.png",
+    "128": "eye-128.png"
+  },
+  "permissions" : [
+    "fileSystem"
+  ]
 }
