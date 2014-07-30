@@ -2,3 +2,9 @@
   margin-top:5px;
   margin-bottom:5px;
 }
+/*
+  Panel tool icons
+*/
+.panel-heading i{
+  float:right;
+}
