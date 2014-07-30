@@ -9,4 +9,4 @@ $(function(){
   
   editor.css('width',width);
   editor.css('height',height);
-})
+});
