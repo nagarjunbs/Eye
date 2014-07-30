@@ -6,14 +6,13 @@
   "app": {
     "background": {
       "scripts": [
-          "background.js",
+          "js/background.js",
           "libs/angular/angular.js",
           "libs/jquery/jquery.js",
           "js/app.js"
         ]
     }
   },
-  "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": { 
     "16": "eye-16.png",
     "128": "eye-128.png"
