@@ -36,11 +36,11 @@ eyeApp.factory("FileSystemService", ['$rootScope',function($rootScope) {
           type: 'openFile'
       }, 
       function(fileObject){
-        //This callback is invoked from the global scope
+        // This callback is invoked from the global scope
         fileObject.file(function(file) {
          var reader = new FileReader();
          reader.onload = function(e) {
-           //Get the scope of the 
+           // Get the scope of the first controller that is found in the dom and emit an event. This is a hack as of now because chrome executes callbacks to file system API's in the global scope
            angular.element("[ng-controller]").scope().$emit('load-file-content',e.target.result);
          };
          reader.readAsText(file);
@@ -57,7 +57,7 @@ eyeApp.factory("FileSystemService", ['$rootScope',function($rootScope) {
       
     }
   };
-  //Event handlers for services
+  // Register event handlers for services
   $rootScope.$on('file-new',service.newFile);
   $rootScope.$on('file-open',service.openFile);
   $rootScope.$on('file-openfolder',service.openFolder);
