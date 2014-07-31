@@ -20,7 +20,7 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
     var clickedMenuItem = $(window.event.target);
     //Check if this menu item has an event associated with it, if yes, broadcast it
     if (typeof clickedMenuItem.data('event') === 'string'){
-      $rootScope.$broadcast(clickedMenuItem.data('event'));
+      $rootScope.$emit(clickedMenuItem.data('event'));
     }
   }
 }]);

@@ -17,11 +17,12 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
       editor.css('width',width);
       editor.css('height',height);
     },
-    loadContent:function(){
-      var ace = ace.edit("editor");
-          ace.setValue(e.target.result);
+    //helper function to load given content into the ace editor
+    loadContent:function(event,fileContent){
+      aceEdit.setValue(fileContent);
     }
   };
+  $rootScope.$on('load-file-content',service.loadContent);
   return service;
 }]);
 
@@ -30,15 +31,17 @@ eyeApp.factory("FileSystemService", ['$rootScope',function($rootScope) {
     newFile:function(){
       
     },
-    openFile: function () {
+    openFile: function (evt, args) {
       chrome.fileSystem.chooseEntry({
           type: 'openFile'
       }, 
       function(fileObject){
+        //This callback is invoked from the global scope
         fileObject.file(function(file) {
          var reader = new FileReader();
          reader.onload = function(e) {
-           
+           //Get the scope of the 
+           angular.element("[ng-controller]").scope().$emit('load-file-content',e.target.result);
          };
          reader.readAsText(file);
        });
