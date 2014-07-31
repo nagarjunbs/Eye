@@ -1,8 +1,16 @@
 // Define the module
 var eyeApp = angular.module('eyeApp', []);
 
-// Define the controller
+// Define the editor controller
+eyeApp.controller('eyeEditorCtrl', ['$scope','$http','EditorService',function ($scope,$http,editorService) {
+  editorService.initEditor('editor');
+}]);
+
+// Define the menu controller
 eyeApp.controller('eyeMenuCtrl', ['$scope','$http','FileSystemService',function ($scope,$http,fsService) {
+  
+  // Inject Service
+  $scope.fsService = fsService;
   $http.get('config/menu.json').success(function(data) {
     $scope.menus = data;
   });
@@ -13,7 +21,9 @@ eyeApp.controller('eyeMenuCtrl', ['$scope','$http','FileSystemService',function 
     switch(window.event.target.id){
       // File-> Open File
       case 'menuitem-open':
-        fsService.openFile();
+        $scope.fsService.openFile();
+        break;
+      case '':
         break;
     }
     
