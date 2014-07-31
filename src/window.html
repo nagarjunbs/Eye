@@ -21,7 +21,7 @@
           </button>
           <div class="navbar-brand"><img src="eye-16.png"/></div>
         </div>
-        <ul class="nav navbar-nav" ng-controller="eyeMenuCtrl">
+        <ul class="nav navbar-nav" ng-controller="eyeMenuController">
           <li class="dropdown" ng-repeat="menu in menus">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{menu.name}}</a>
             <ul class="dropdown-menu" role="menu">
@@ -39,7 +39,7 @@
    <br/>
    <br/>
    <br/>
-    <div class="container-fluid" id='editor-area' ng-controller="eyeEditorCtrl">
+    <div class="container-fluid" id='editor-area' ng-controller="eyeEditorController">
       <div class="row">
         <!--Left bar -->
         <div class="col-sm-3 col-md-2 sidebar">

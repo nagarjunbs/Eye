@@ -2,12 +2,12 @@
 var eyeApp = angular.module('eyeApp', []);
 
 // Define the editor controller
-eyeApp.controller('eyeEditorCtrl', ['$scope','$http','EditorService',function ($scope,$http,editorService) {
+eyeApp.controller('eyeEditorController', ['$scope','$http','EditorService',function ($scope,$http,editorService) {
   editorService.initEditor('editor');
 }]);
 
 // Define the menu controller
-eyeApp.controller('eyeMenuCtrl', ['$scope','$http','FileSystemService',function ($scope,$http,fsService) {
+eyeApp.controller('eyeMenuController', ['$scope','$http','FileSystemService',function ($scope,$http,fsService) {
   
   // Inject Service
   $scope.fsService = fsService;
