@@ -5,38 +5,44 @@
       "name":"New..",
       "type":"menuitem",
       "id":"menuitem-new",
-      "icon":"pencil"
+      "icon":"pencil",
+      "event":"file-new"
     },{
       "name":"Open",
       "type":"menuitem",
       "id":"menuitem-open",
-      "icon":"file-text-o"
+      "icon":"file-text-o",
+      "event":"file-open"
     },{
       "type":"seperator"
     },{
       "name":"Open Folder",
       "type":"menuitem",
       "id":"menuitem-open-folder",
-      "icon":"folder-open"
+      "icon":"folder-open",
+      "event":"file-openfolder"
     },{
       "type":"seperator"
     },{
       "name":"Save",
       "type":"menuitem",
       "id":"menuitem-save",
-      "icon":"save"
+      "icon":"save",
+      "event":"file-savefile"
     },{
       "name":"Save As...",
       "type":"menuitem",
       "id":"menuitem-save-as",
-      "icon":"save"
+      "icon":"save",
+      "event":"file-savefileas"
     },{
       "type":"seperator"
     },{
       "name":"Exit",
       "type":"menuitem",
       "id":"menuitem-exit",
-      "icon":"sign-out"
+      "icon":"sign-out",
+      "event":"extension-exit"
     }]
   },{
     "name":"Edit",

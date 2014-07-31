@@ -1,4 +1,4 @@
-eyeApp.factory("EditorService",function(){
+eyeApp.factory("EditorService",['$rootScope',function($rootScope){
   //Init Ace
   var aceEdit;
   
@@ -16,12 +16,16 @@ eyeApp.factory("EditorService",function(){
       
       editor.css('width',width);
       editor.css('height',height);
+    },
+    loadContent:function(){
+      var ace = ace.edit("editor");
+          ace.setValue(e.target.result);
     }
   };
   return service;
-});
+}]);
 
-eyeApp.factory("FileSystemService", function() {
+eyeApp.factory("FileSystemService", ['$rootScope',function($rootScope) {
   var service = {
     newFile:function(){
       
@@ -34,8 +38,7 @@ eyeApp.factory("FileSystemService", function() {
         fileObject.file(function(file) {
          var reader = new FileReader();
          reader.onload = function(e) {
-           var ace = ace.edit("editor");
-          ace.setValue(e.target.result);
+           
          };
          reader.readAsText(file);
        });
@@ -51,5 +54,12 @@ eyeApp.factory("FileSystemService", function() {
       
     }
   };
+  //Event handlers for services
+  $rootScope.$on('file-new',service.newFile);
+  $rootScope.$on('file-open',service.openFile);
+  $rootScope.$on('file-openfolder',service.openFolder);
+  $rootScope.$on('file-savefile',service.saveFile);
+  $rootScope.$on('file-savefileas',service.saveFileAs);
+  
   return service;
-});
+}]);
