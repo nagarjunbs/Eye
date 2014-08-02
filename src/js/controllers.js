@@ -40,9 +40,11 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
     }
   }
   
+  
+  
   // Register event handlers for services
   $rootScope.$on('file-new',fsService.newFile);
-  $rootScope.$on('file-open',fsService.openFile);
+  $rootScope.$on('file-open',$.proxy(fsService.openFile,$scope));
   $rootScope.$on('file-openfolder',fsService.openFolder);
   $rootScope.$on('file-savefile',fsService.saveFile);
   $rootScope.$on('file-savefileas',fsService.saveFileAs);

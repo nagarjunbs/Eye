@@ -36,24 +36,17 @@ eyeApp.factory("FileSystemService", ['$rootScope',function($rootScope) {
       
     },
     openFile: function (evt, args) {
+      
+      var chooseFileEntryCallback = $.proxy(function(fileObject){
+          var callback = $.proxy(function(file) {
+            
+          },this)
+          fileObject.file(callback);
+      },this);
+      
       chrome.fileSystem.chooseEntry({
           type: 'openFile'
-      },
-      function(fileObject){
-        // This callback is invoked from the global scope
-        fileObject.file(function(file) {
-         var reader = new FileReader();
-         reader.onload = function(file) {
-           // Hack to get around problematic closure scope which doesnt pass on the fileName to the below function
-           angular.element("[ng-controller]").scope().$emit('register-opened-file',file);
-           return function(e){
-             // Get the scope of the first controller that is found in the dom and emit an event. This is a hack as of now because chrome executes callbacks to file system API's in the global scope
-             angular.element("[ng-controller]").scope().$emit('load-opened-file-content',e);
-           }
-         }(file);
-         reader.readAsText(file);
-       });
-      });
+      },chooseFileEntryCallback);
     },
     openFolder:function(){
       
