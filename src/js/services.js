@@ -20,11 +20,8 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
       aceEditors[containerId] = aceEdit;
     },
     //helper function to load given content into the ace editor
-    loadContent:function(event, fileContent){
-      
-      if (aceEdit){
-        aceEdit.setValue(fileContent.target.result);
-      }
+    loadContent:function(fileId,fileContent){
+      aceEditors[fileId].setValue(fileContent);
     }
   };
   return service;
@@ -36,11 +33,16 @@ eyeApp.factory("FileSystemService", ['$rootScope',function($rootScope) {
       
     },
     openFile: function (evt, args) {
-      
+      //Preserve the scope passed to this function via jquery proxies
       var chooseFileEntryCallback = $.proxy(function(fileObject){
-          var callback = $.proxy(function(file) {
-            
-          },this)
+          var callback = $.proxy(function(fileEntry,chosenFileObject) {
+            var reader = new FileReader();
+            var readerProxy = $.proxy(function(fileEntry,chosenFileObject,event){
+              this.$emit('load-opened-file-content',fileEntry.name,event.target.result);
+            },this,fileEntry,chosenFileObject);
+            reader.onloadend = readerProxy;
+            reader.readAsText(chosenFileObject);
+          },this,fileObject)
           fileObject.file(callback);
       },this);
       

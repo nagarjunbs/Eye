@@ -3,22 +3,25 @@ var eyeApp = angular.module('eyeApp', []);
 
 // Define the editor controller
 eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorService',function ($scope,$http,$rootScope,editorService) {
-  //editorService.initEditor('editor');
-  $scope.openedDocuments = [];
-  // Register event handlers
-  $rootScope.$on('load-opened-file-content',editorService.loadContent);
   
-  $rootScope.$on('register-opened-file',function(event,file){
-    $scope.$apply(function() {
-      // Update goes here
-      // Convert this into a filter later
-      file.id = 'editor-' + file.name.replace(/[^\w\s]/gi, '');
-      $scope.openedDocuments.push(file);
-      setTimeout(function(){
-        editorService.initEditor(file.id);
-      }, 3000);
+  $scope.openedDocuments = [];
+  
+  // Register event handlers
+  $rootScope.$on('load-opened-file-content',$.proxy(function(eventInfo, fileName,fileContent){
+    var fileId = 'editor-' + fileName.replace(/[^\w\s]/gi, '');
+    this.openedDocuments.push({
+      id:fileId,
+      name:fileName
     });
-  });
+    this.$apply();
+    this.$emit('init-editor-with-timeout',fileId,fileContent);
+  },$scope));
+  $rootScope.$on('init-editor-with-timeout',$.proxy(function(eventInfo,fileId,fileContent){
+    setTimeout($.proxy(function(fileId,fileContent){
+        this.initEditor(fileId);
+        this.loadContent(fileId,fileContent)
+      },this,fileId,fileContent),1000);
+  },editorService));
 }]);
 
 // Define the menu controller
