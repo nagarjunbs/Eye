@@ -40,11 +40,11 @@
    <br/>
    <br/>
    
-    <div class="container-fluid" id="tab-list" ng-controller="eyeEditorController">
+    <div class="container-fluid" ng-controller="eyeEditorController">
       <div class="row">
-        <ul class="nav nav-tabs" role="tablist">
-          <li ng-repeat="document in openedDocuments">
-            <a href="#">
+        <ul class="nav nav-tabs" role="tablist" id="tab-list">
+          <li  ng-repeat="document in openedDocuments">
+            <a ng-href="#{{document.id}}" target="_blank">
               {{document.name}}
             </a>
           </li>

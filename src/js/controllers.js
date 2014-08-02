@@ -18,7 +18,6 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
     // Call the angular apply function to update the dom with the editor id
     this.$apply();
     this.$emit('init-editor-with-timeout',fileId,fileContent);
-    debugger;
   },$scope));
   // Handle the init-editor-with-timeout which allows the ace editor to be created, then loads the file content after a timeout.
   $rootScope.$on('init-editor-with-timeout',$.proxy(function(eventInfo,fileId,fileContent){
@@ -28,6 +27,12 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
         this.initEditor(fileId);
         //Load the file content into the editor
         this.loadContent(fileId,fileContent);
+        var lastTabAdded = $('#tab-list a:last');
+        lastTabAdded.tab('show');
+        lastTabAdded.click(function (e) {
+          lastTabAdded.tab('show');
+          $(this).tab('show');
+        });
       },this,fileId,fileContent),200);
   },editorService));
 }]);
