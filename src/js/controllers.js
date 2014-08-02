@@ -31,7 +31,6 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
         lastTabAdded.tab('show');
         lastTabAdded.click(function (e) {
           lastTabAdded.tab('show');
-          $(this).tab('show');
         });
       },this,fileId,fileContent),200);
   },editorService));
