@@ -1,7 +1,5 @@
 [
   {
-    "name": "File", 
-    "children":[{
       "name":"New..",
       "type":"menuitem",
       "id":"menuitem-new",
@@ -14,15 +12,11 @@
       "icon":"file-text-o",
       "event":"file-open"
     },{
-      "type":"seperator"
-    },{
       "name":"Open Folder",
       "type":"menuitem",
       "id":"menuitem-open-folder",
       "icon":"folder-open",
       "event":"file-openfolder"
-    },{
-      "type":"seperator"
     },{
       "name":"Save",
       "type":"menuitem",
@@ -38,21 +32,10 @@
     },{
       "type":"seperator"
     },{
-      "name":"Exit",
-      "type":"menuitem",
-      "id":"menuitem-exit",
-      "icon":"sign-out",
-      "event":"extension-exit"
-    }]
-  },{
-    "name":"Edit",
-    "children":[{
       "name":"Undo",
       "type":"menuitem",
       "id":"menuitem-undo",
       "icon":"undo"
-    },{
-      "type":"seperator"
     },{
       "name":"Cut",
       "type":"menuitem",
@@ -68,10 +51,9 @@
       "type":"menuitem",
       "id":"menuitem-paste",
       "icon":"paste"
-    }]
-  },{
-    "name":"Help",
-    "children":[{
+    },{
+      "type":"seperator"
+    },{
       "name":"Documentation",
       "type":"menuitem",
       "id":"menuitem-documentation",
@@ -82,12 +64,9 @@
       "id":"menuitem-github",
       "icon":"github"
     },{
-      "type":"seperator"
-    },{
       "name":"About",
       "type":"menuitem",
       "id":"menuitem-about",
       "icon":"external-link"
-    }]
-  }
+    }
 ]
