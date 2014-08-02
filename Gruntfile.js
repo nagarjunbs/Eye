@@ -20,6 +20,9 @@ module.exports = function(grunt) {
               // Bootstrap
               'bootstrap':'bootstrap/dist/*',
               
+              // Angular-bootstrap
+              'angular-bootstrap':'angular-bootstrap/*.js',
+              
               // Font-Awesome
               'font-awesome/css':'font-awesome/css/*',
               'font-awesome/fonts':'font-awesome/fonts/*',

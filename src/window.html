@@ -44,7 +44,7 @@
       <div class="row">
         <ul class="nav nav-tabs" role="tablist" id="tab-list">
           <li  ng-repeat="document in openedDocuments">
-            <a ng-href="#{{document.id}}" target="_blank">
+            <a ng-href="#{{document.id}}" target="_blank" role="tab" data-toggle="tab">
               {{document.name}}
             </a>
           </li>
@@ -52,7 +52,7 @@
       </div>
       <div class="row" id='editor-area'>
          <!--Editor area -->
-        <div class="col-sm-2" ng-repeat="document in openedDocuments" id="{{document.id}}" data-docname="{{document.name}}"></div>
+        <div class="col-sm-2 tab-pane" ng-repeat="document in openedDocuments" id="{{document.id}}" data-docname="{{document.name}}"></div>
       </div>
     </div>
     

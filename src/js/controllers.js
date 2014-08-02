@@ -27,6 +27,7 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
         this.initEditor(fileId);
         //Load the file content into the editor
         this.loadContent(fileId,fileContent);
+        //Add an event handler to the newly added tab, done this way so that all tab elements dont get a handler added over and over again
         var lastTabAdded = $('#tab-list a:last');
         lastTabAdded.tab('show');
         lastTabAdded.click(function (e) {
