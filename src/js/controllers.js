@@ -19,8 +19,8 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
   $rootScope.$on('init-editor-with-timeout',$.proxy(function(eventInfo,fileId,fileContent){
     setTimeout($.proxy(function(fileId,fileContent){
         this.initEditor(fileId);
-        this.loadContent(fileId,fileContent)
-      },this,fileId,fileContent),1000);
+        this.loadContent(fileId,fileContent);
+      },this,fileId,fileContent),200);
   },editorService));
 }]);
 
