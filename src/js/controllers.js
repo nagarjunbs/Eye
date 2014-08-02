@@ -1,5 +1,5 @@
 // Define the module
-var eyeApp = angular.module('eyeApp', []);
+var eyeApp = angular.module('eyeApp', ['ui.bootstrap']);
 
 // Define the editor controller
 eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorService',function ($scope,$http,$rootScope,editorService) {
@@ -7,7 +7,7 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
   $scope.openedDocuments = [];
   
   // Register scoped event handlers
-  $rootScope.$on('load-opened-file-content',$.proxy(function(eventInfo, fileName,fileContent){
+  $rootScope.$on('load-opened-file-content',$.proxy(function(editorService,eventInfo, fileName,fileContent){
     // The fileId has the pattern editor-<fileName><extension> Notice that the dots have been replaced in the filename so catalina.sh's id will be catalinash
     var fileId = 'editor-' + fileName.replace(/[^\w\s]/gi, '');
     // Keep a track of the opened documents
@@ -17,10 +17,7 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
     });
     // Call the angular apply function to update the dom with the editor id
     this.$apply();
-    this.$emit('init-editor-with-timeout',fileId,fileContent);
-  },$scope));
-  // Handle the init-editor-with-timeout which allows the ace editor to be created, then loads the file content after a timeout.
-  $rootScope.$on('init-editor-with-timeout',$.proxy(function(eventInfo,fileId,fileContent){
+    // Handle the init-editor-with-timeout which allows the ace editor to be created, then loads the file content after a timeout.
     //Set a timeout
     setTimeout($.proxy(function(fileId,fileContent){
         //Call the service to init the editor on the target div
@@ -33,8 +30,8 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
         lastTabAdded.click(function (e) {
           lastTabAdded.tab('show');
         });
-      },this,fileId,fileContent),200);
-  },editorService));
+      },editorService,fileId,fileContent),200);
+  },$scope,editorService));
 }]);
 
 // Define the menu controller

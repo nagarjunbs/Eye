@@ -21,9 +21,12 @@
           </button>
           <div class="navbar-brand"><img src="eye-16.png"/></div>
         </div>
-        <ul class="nav navbar-nav" ng-controller="eyeMenuController">
-          <li class="dropdown" ng-repeat="menu in menus">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{menu.name}}</a>
+        <!-- The menus -->
+        <span ng-controller="eyeMenuController">
+          <div class="btn-group" dropdown is-open="status.isopen" ng-repeat="menu in menus">
+            <button type="button" class="btn btn-link dropdown-toggle" ng-disabled="disabled">
+              {{menu.name}}
+            </button>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="menuItem in menu.children">
                 <a ng-click='handleMenuItemClick();' ng-if="menuItem['type']=='menuitem' && menuItem['name']" class="menu-{{menuItem['type']}}" id="{{menuItem.id}}" target="_blank" href="" data-event="{{menuItem.event}}">
@@ -32,34 +35,27 @@
                 <hr ng-if="menuItem['type']=='seperator'" class="menu-{{menuItem['type']}}"/>
               </li>
             </ul>
-          </li>
-        </ul>
+          </div>
+        </span>
       </div>
     </div>
    <br/>
    <br/>
    <br/>
-   
     <div class="container-fluid" ng-controller="eyeEditorController">
-      <div class="row">
-        <ul class="nav nav-tabs" role="tablist" id="tab-list">
-          <li  ng-repeat="document in openedDocuments">
-            <a ng-href="#{{document.id}}" target="_blank" role="tab" data-toggle="tab">
-              {{document.name}}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="row" id='editor-area'>
-         <!--Editor area -->
-        <div class="col-sm-2 tab-pane" ng-repeat="document in openedDocuments" id="{{document.id}}" data-docname="{{document.name}}"></div>
-      </div>
+      <tabset>
+        <tab ng-repeat="document in openedDocuments" heading="{{document.name}}" active="tab.active" disabled="tab.disabled">
+          &nbsp;
+          <div id="{{document.id}}" data-docname="{{document.name}}"></div>
+        </tab>
+      </tabset>
     </div>
-    
     <!-- Libraries -->
     <script src="libs/jquery/jquery.js"></script>
     <script src="libs/angular/angular.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
+    <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="libs/ace/ace.js"></script>
     
     <!-- Extension specific app.js -->
