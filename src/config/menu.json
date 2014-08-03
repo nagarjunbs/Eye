@@ -1,6 +1,6 @@
 [
   {
-      "name":"New..",
+      "name":"New File",
       "type":"menuitem",
       "id":"menuitem-new",
       "icon":"pencil",
@@ -29,28 +29,6 @@
       "id":"menuitem-save-as",
       "icon":"save",
       "event":"file-savefileas"
-    },{
-      "type":"seperator"
-    },{
-      "name":"Undo",
-      "type":"menuitem",
-      "id":"menuitem-undo",
-      "icon":"undo"
-    },{
-      "name":"Cut",
-      "type":"menuitem",
-      "id":"menuitem-cut",
-      "icon":"cut"
-    },{
-      "name":"Copy",
-      "type":"menuitem",
-      "id":"menuitem-copy",
-      "icon":"copy"
-    },{
-      "name":"Paste",
-      "type":"menuitem",
-      "id":"menuitem-paste",
-      "icon":"paste"
     },{
       "type":"seperator"
     },{

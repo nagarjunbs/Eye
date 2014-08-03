@@ -23,7 +23,7 @@
         <span ng-controller="eyeMenuController" id="menu-container">
           <span class="btn-group" ng-repeat="menu in menus">
             <button class="btn btn-default" ng-click='handleMenuItemClick();' ng-if="menu['type']=='menuitem' && menu['name']" id="{{menu.id}}" target="_blank" href="" data-event="{{menu.event}}">
-              <i class="fa fa-{{menu['icon']}} fa-1x"></i>
+              <i class="fa fa-{{menu['icon']}} fa-1x"></i>&nbsp;&nbsp;{{menu['name']}}
             </button>
           </span>
         </span>
