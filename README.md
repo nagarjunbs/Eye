@@ -34,4 +34,5 @@ Installation:
 4. To get all dependencies of this project, run "bower install" via command line
 5. To run the grunt tasks, run "grunt" via command line
 6. The sources are kept in the "src" directory while the deployable version is kept under the "dist" directory
-7. You are now ready to start hacking away
+7. Load an upacked extension in chrome and point the path to Eye/src
+8. You are now ready to start hacking away
