@@ -8,9 +8,6 @@
 .panel-heading i{
   float:right;
 }
-#top-menu{
-  margin-top:-2px;
-}
 #tab-list{
   margin-top:-15px;
 }
@@ -19,5 +16,11 @@
 }
 
 #menu-container{
+  width:100%;
+}
+#navbar-header{
+  width:100%;
+}
+.navbar-header{
   width:100%;
 }
