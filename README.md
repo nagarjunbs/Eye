@@ -23,6 +23,7 @@ Libraries
 2. Angular
 3. Bootstrap
 4. Font-awesome
+5. Angular-Bootstrap
 
 
 Installation:
