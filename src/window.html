@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <!-- ng-app ng-csp required for chrome extensions-->
 <html ng-app="eyeApp" ng-csp>
-  <head>
-  
-    <!-- CSS stylesheets from libs -->
-    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="libs/font-awesome/css/font-awesome.css" rel="stylesheet">
-    
-    <!-- Extension specific CSS stylesheets -->
-    <link href="resources/css/app.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="navbar navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <!-- Top Navbar -->
-        <div class="navbar-header row">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-          </button>
-          <i class="fa fa-eye"></i>
-          <!-- The menus -->
+
+<head>
+
+  <!-- CSS stylesheets from libs -->
+  <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="libs/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+  <!-- Extension specific CSS stylesheets -->
+  <link href="resources/css/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="navbar navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <!-- Top Navbar -->
+      <div class="navbar-header row">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <i class="fa fa-eye"></i>
+        <!-- The menus -->
         <span ng-controller="eyeMenuController" id="menu-container">
           <span class="btn-group" ng-repeat="menu in menus">
             <button class="btn btn-default" ng-click='handleMenuItemClick();' ng-if="menu['type']=='menuitem' && menu['name']" id="{{menu.id}}" target="_blank" href="" data-event="{{menu.event}}">
               <i class="fa fa-{{menu['icon']}} fa-1x"></i>
             </button>
             <span ng-if="menu['type']=='seperator'" class="menu-seperator"></span>
-          </span>
         </span>
-        </div>
-        
+        </span>
       </div>
     </div>
-    <div id="tab-container" class="container-fluid" ng-controller="eyeEditorController">
-      <tabset>
-        <tab ng-repeat="document in openedDocuments" heading="{{document.name}}" active="tab.active" disabled="tab.disabled">
-          &nbsp;
-          <div id="{{document.id}}" data-docname="{{document.name}}"></div>
-        </tab>
-      </tabset>
-    </div>
-    <!-- Libraries -->
-    <script src="libs/jquery/jquery.js"></script>
-    <script src="libs/angular/angular.js"></script>
-    <script src="libs/bootstrap/js/bootstrap.js"></script>
-    <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="libs/ace/ace.js"></script>
-    
-    <!-- Extension specific app.js -->
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/filters.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+  </div>
+  <div id="tab-container" class="container-fluid" ng-controller="eyeEditorController">
+    <tabset>
+      <tab ng-repeat="document in openedDocuments" heading="{{document.name}}" active="tab.active" disabled="tab.disabled">
+        &nbsp;
+        <div id="{{document.id}}" data-docname="{{document.name}}"></div>
+      </tab>
+    </tabset>
+  </div>
+  <!-- Libraries -->
+  <script src="libs/jquery/jquery.js"></script>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/bootstrap/js/bootstrap.js"></script>
+  <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="libs/ace/ace.js"></script>
+
+  <!-- Extension specific app.js -->
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
 </html>
