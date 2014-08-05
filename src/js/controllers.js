@@ -10,27 +10,24 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
   $rootScope.$on('load-opened-file-content',$.proxy(function(editorService,eventInfo, fileName,fileContent){
     // The fileId has the pattern editor-<fileName><extension> Notice that the dots have been replaced in the filename so catalina.sh's id will be catalinash
     var fileId = 'editor-' + fileName.replace(/[^\w\s]/gi, '');
-    // Keep a track of the opened documents
+    //Loop through earlier recorded document tabs and set their active state to false
+    $.each(this.openedDocuments,function(currentDoc){
+      currentDoc.active = false;
+    });
+    
+    // Push in the newest opened document with active set to true
     this.openedDocuments.push({
       id:fileId,
-      name:fileName
+      name:fileName,
+      active:true
     });
     // Call the angular apply function to update the dom with the editor id
     this.$apply();
     // Handle the init-editor-with-timeout which allows the ace editor to be created, then loads the file content after a timeout.
-    //Set a timeout
-    setTimeout($.proxy(function(fileId,fileContent){
-        //Call the service to init the editor on the target div
-        this.initEditor(fileId);
-        //Load the file content into the editor
-        this.loadContent(fileId,fileContent);
-        //Add an event handler to the newly added tab, done this way so that all tab elements dont get a handler added over and over again
-        var lastTabAdded = $('#tab-list a:last');
-        lastTabAdded.tab('show');
-        lastTabAdded.click(function (e) {
-          lastTabAdded.tab('show');
-        });
-      },editorService,fileId,fileContent),200);
+    //Call the service to init the editor on the target div
+    editorService.initEditor(fileId);
+    //Load the file content into the editor
+    editorService.loadContent(fileId,fileContent);
   },$scope,editorService));
 }]);
 
@@ -57,7 +54,9 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
   
   // Register event handlers for services
   //Handler for the new file event
-  $rootScope.$on('file-new',fsService.newFile);
+  $rootScope.$on('file-new',function(){
+    
+  });
   //Handler for the file open event
   $rootScope.$on('file-open',$.proxy(function(){
     // Preserve the scope passed to this function via jquery proxies throughout this chain since chrome switches to global scope given no scope
@@ -86,7 +85,7 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
       chrome.fileSystem.chooseEntry({
           type: 'openFile'
       },chooseFileEntryCallback);
-  }));
+  },$scope));
   $rootScope.$on('file-openfolder',fsService.openFolder);
   $rootScope.$on('file-savefile',fsService.saveFile);
   $rootScope.$on('file-savefileas',fsService.saveFileAs);

@@ -35,7 +35,7 @@
   </div>
   <div id="tab-container" class="container-fluid" ng-controller="eyeEditorController">
     <tabset>
-      <tab ng-repeat="document in openedDocuments" heading="{{document.name}}" active="tab.active" disabled="tab.disabled">
+      <tab ng-repeat="document in openedDocuments" heading="{{document.name}}" active="document.active">
         &nbsp;
         <div id="{{document.id}}" data-docname="{{document.name}}"></div>
       </tab>
