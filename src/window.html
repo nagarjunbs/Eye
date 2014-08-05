@@ -18,13 +18,14 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
           </button>
-          <div class="navbar-brand"><img src="eye-16.png"/></div>
+          <i class="fa fa-eye"></i>
           <!-- The menus -->
         <span ng-controller="eyeMenuController" id="menu-container">
           <span class="btn-group" ng-repeat="menu in menus">
             <button class="btn btn-default" ng-click='handleMenuItemClick();' ng-if="menu['type']=='menuitem' && menu['name']" id="{{menu.id}}" target="_blank" href="" data-event="{{menu.event}}">
-              <i class="fa fa-{{menu['icon']}} fa-1x"></i>&nbsp;&nbsp;{{menu['name']}}
+              <i class="fa fa-{{menu['icon']}} fa-1x"></i>
             </button>
+            <span ng-if="menu['type']=='seperator'" class="menu-seperator"></span>
           </span>
         </span>
         </div>
