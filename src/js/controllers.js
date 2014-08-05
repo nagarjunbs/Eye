@@ -9,21 +9,10 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
   // Register scoped event handlers
   $rootScope.$on('load-opened-file-content',$.proxy(function(editorService,eventInfo, fileName,fileContent){
     // The fileId has the pattern editor-<fileName><extension> Notice that the dots have been replaced in the filename so catalina.sh's id will be catalinash
-    var fileId = 'editor-' + fileName.replace(/[^\w\s]/gi, '');
-    //Loop through earlier recorded document tabs and set their active state to false
-    $.each(this.openedDocuments,function(currentDoc){
-      currentDoc.active = false;
-    });
-    
-    // Push in the newest opened document with active set to true
-    this.openedDocuments.push({
-      id:fileId,
-      name:fileName,
-      active:true
-    });
+    var fileId = editorService.getTabIdFromFileName(fileName);
+    editorService.trackFile(this.openedDocuments,fileId,fileName);
     // Call the angular apply function to update the dom with the editor id
     this.$apply();
-    // Handle the init-editor-with-timeout which allows the ace editor to be created, then loads the file content after a timeout.
     //Call the service to init the editor on the target div
     editorService.initEditor(fileId);
     //Load the file content into the editor
@@ -49,8 +38,6 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
       $rootScope.$emit(clickedMenuItem.data('event'));
     }
   }
-  
-  
   
   // Register event handlers for services
   //Handler for the new file event

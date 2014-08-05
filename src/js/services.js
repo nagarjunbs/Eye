@@ -2,7 +2,8 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
   //Init Ace
   var aceEditors = [],
       editorWidth = 0,
-      editorHeight = 0;
+      editorHeight = 0,
+      fileNameIdReplacePattern = /[^\w\s]/gi;
   //Define the services
   var service = {
     //Initialize the Ace editor
@@ -28,6 +29,26 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
       if (aceEditors[fileId]){
         aceEditors[fileId].setValue(fileContent);
       }
+    },
+    trackFile:function(openedDocuments,fileId,fileName){
+      //Loop through earlier recorded document tabs and set their active state to false
+      $.each(openedDocuments,function(currentDoc){
+        currentDoc.active = false;
+      });
+      
+      // Push in the newest opened document with active set to true
+      openedDocuments.push({
+        id:fileId,
+        name:fileName,
+        active:true
+      });
+      return openedDocuments;
+    },
+    getTabIdFromFileName:function(fileName){
+      return 'editor-' + this.getIdFromFileName(fileName)
+    },
+    getIdFromFileName:function(fileName){
+      return fileName.replace(fileNameIdReplacePattern, '');
     }
   };
   return service;
