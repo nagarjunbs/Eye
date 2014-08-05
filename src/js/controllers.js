@@ -31,7 +31,7 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
     setTimeout($.proxy(function(){
       this.$apply();
       editorService.initEditor(fileId)
-    },this),1000);
+    },this),10);
   },$scope,editorService))
 }]);
 
