@@ -10,14 +10,29 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
   $rootScope.$on('load-opened-file-content',$.proxy(function(editorService,eventInfo, fileName,fileContent){
     // The fileId has the pattern editor-<fileName><extension> Notice that the dots have been replaced in the filename so catalina.sh's id will be catalinash
     var fileId = editorService.getTabIdFromFileName(fileName);
+    
     editorService.trackFile(this.openedDocuments,fileId,fileName);
+    
     // Call the angular apply function to update the dom with the editor id
     this.$apply();
-    //Call the service to init the editor on the target div
+    // Call the service to init the editor on the target div
     editorService.initEditor(fileId);
-    //Load the file content into the editor
+    // Load the file content into the editor
     editorService.loadContent(fileId,fileContent);
   },$scope,editorService));
+  
+  // Handle spawning new tabs through the service
+  $rootScope.$on('spawn-new-tab',$.proxy(function(editorService,eventInfo){
+    var fileName = editorService.generateNewFileName(),
+        fileId = editorService.getTabIdFromFileName(fileName);
+    
+    editorService.trackFile(this.openedDocuments,fileId,'New File*');
+    //this.$apply();
+    setTimeout($.proxy(function(){
+      this.$apply();
+      editorService.initEditor(fileId)
+    },this),1000);
+  },$scope,editorService))
 }]);
 
 // Define the menu controller
@@ -40,10 +55,11 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
   }
   
   // Register event handlers for services
-  //Handler for the new file event
-  $rootScope.$on('file-new',function(){
-    
-  });
+  // Handler for the new file event
+  $rootScope.$on('file-new',$.proxy(function(){
+    this.$emit('spawn-new-tab');
+  },$scope));
+  
   //Handler for the file open event
   $rootScope.$on('file-open',$.proxy(function(){
     // Preserve the scope passed to this function via jquery proxies throughout this chain since chrome switches to global scope given no scope

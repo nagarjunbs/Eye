@@ -42,13 +42,18 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
         name:fileName,
         active:true
       });
-      return openedDocuments;
+    },
+    generateNewFileName:function(){
+      return (Math.random()*1+1000);
     },
     getTabIdFromFileName:function(fileName){
-      return 'editor-' + this.getIdFromFileName(fileName)
+      return 'editor-' + this.getIdFromFileName(fileName);
     },
     getIdFromFileName:function(fileName){
-      return fileName.replace(fileNameIdReplacePattern, '');
+      if (typeof fileName == 'string')
+        return fileName.replace(fileNameIdReplacePattern, '');
+      else if (typeof fileName == 'number')
+        return Math.floor(fileName);
     }
   };
   return service;
