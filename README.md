@@ -1,7 +1,6 @@
 Eye
 ===
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
-[![Coverage Status](https://img.shields.io/coveralls/FlyinPanda/Eye.svg)]
+[![Build Status](https://travis-ci.org/FlyinPanda/Eye.svg?branch=master)](https://travis-ci.org/FlyinPanda/Eye)
 A chrome extension for web developers with an editor, and the most common web development utilities. This project was created because I found the existing chrome editors to be sub-par.
 
 Planned features
