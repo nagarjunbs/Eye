@@ -30,9 +30,9 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
     //this.$apply();
     setTimeout($.proxy(function(){
       this.$apply();
-      editorService.initEditor(fileId)
+      editorService.initEditor(fileId);
     },this),10);
-  },$scope,editorService))
+  },$scope,editorService));
 }]);
 
 // Define the menu controller
@@ -52,7 +52,7 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
     if (typeof clickedMenuItem.data('event') === 'string'){
       $rootScope.$emit(clickedMenuItem.data('event'));
     }
-  }
+  };
   
   // Register event handlers for services
   // Handler for the new file event
@@ -79,7 +79,7 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
               reader.onloadend = readerProxy;
               // Trigger the read operation, which will call the handler above after it finishes
               reader.readAsText(chosenFileObject);
-            },this,fileObject)
+            },this,fileObject);
             fileObject.file(callback);
           }
       },this);

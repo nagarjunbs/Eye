@@ -3,6 +3,18 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    jshint: {
+      files: ['gruntfile.js', 'src/js/*.js'],
+      // configure JSHint (documented at http://www.jshint.com/docs/)
+      options: {
+          // more options here if you want to override JSHint defaults
+        globals: {
+          jQuery: true,
+          console: true,
+          module: true
+        }
+      },
+    },
     bowercopy: {
       // Javascript
       libs: {
@@ -33,12 +45,16 @@ module.exports = function(grunt) {
             //For dist
           },
       },
+    },
+    watch: {
+      files: ['<%= jshint.files %>'],
+      tasks: ['jshint', 'qunit']
     }
   });
 
   grunt.loadNpmTasks('grunt-bowercopy');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task(s).
-  grunt.registerTask('default', ['bowercopy']);
-
+  grunt.registerTask('default', ['bowercopy','jshint']);
 };

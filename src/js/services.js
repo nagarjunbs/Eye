@@ -12,15 +12,16 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
   
       var editor = $('#' + containerId);
       // If this is the first time an editor is being rendered, calculate the height and width and cache it
-      if (editorWidth==0 && editorHeight==0){
+      if (editorWidth===0 && editorHeight===0){
         //Set its height and width according to the screens resolution, we do this because ace expects absolute values for height and width
-        editorWidth = editor.parent().width(),
-        editorHeight = (screen.height*85/100);
+        editorWidth = editor.parent().width();
+        editorHeight = screen.height*85/100;
       }
       
       editor.css('width',editorWidth);
       editor.css('height',editorHeight);
       
+      //Maintain a mapping between the containerId and the actual aceeditor
       aceEditors[containerId] = aceEdit;
     },
     // Helper function to load given content into the mapped ace editor

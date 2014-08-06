@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!-- ng-app ng-csp required for chrome extensions-->
+<!-- ng-csp required for chrome extensions-->
 <html ng-app="eyeApp" ng-csp>
-
 <head>
-
   <!-- CSS stylesheets from libs -->
   <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="libs/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -11,7 +9,6 @@
   <!-- Extension specific CSS stylesheets -->
   <link href="resources/css/app.css" rel="stylesheet">
 </head>
-
 <body>
   <div class="navbar navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -33,6 +30,7 @@
       </div>
     </div>
   </div>
+  <!-- Tabs for files -->
   <div id="tab-container" class="container-fluid" ng-controller="eyeEditorController">
     <tabset>
       <tab ng-repeat="document in openedDocuments" heading="{{document.name}}" active="document.active">
