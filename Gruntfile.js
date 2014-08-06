@@ -1,23 +1,40 @@
 module.exports = function(grunt) {
-
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
       files: ['gruntfile.js', 'src/js/*.js'],
-      // configure JSHint (documented at http://www.jshint.com/docs/)
       options: {
-          // more options here if you want to override JSHint defaults
         globals: {
           jQuery: true,
           console: true,
           module: true
         }
+      }
+    },
+    concat: {
+      js: {
+        src: [
+          // The libs
+          'bower_components/ace-builds/src-min-noconflict/ace.js',
+          'bower_components/jquery/dist/jquery.min.js',
+          'bower_components/angular/angular.min.js',
+          'bower_components/bootstrap/dist/js/bootstrap.min.js',
+          'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+          'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+          
+          // App specific files
+          'src/js/*.js'
+        ],
+        dest: 'dist/built.js',
       },
+      css:{
+        
+      }
     },
     bowercopy: {
       // Javascript
-      libs: {
+      js: {
           options: {
               destPrefix: 'src/libs'
           },
@@ -54,7 +71,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-bowercopy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  
   // Default task(s).
-  grunt.registerTask('default', ['bowercopy','jshint']);
+  grunt.registerTask('default', ['bowercopy','jshint','concat']);
 };

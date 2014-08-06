@@ -12,7 +12,9 @@
   margin-top:-15px;
 }
 #tab-container{
-  padding-top:45px;
+  
+  padding-top:40px;
+  margin-left: -15px;
 }
 
 #menu-container{
@@ -31,4 +33,7 @@
 }
 .menu-seperator{
   padding-left:20px;
+}
+.ace-tm{
+  margin-top:-18px;
 }
