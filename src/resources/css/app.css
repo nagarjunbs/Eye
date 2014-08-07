@@ -2,9 +2,6 @@
   margin-top:5px;
   margin-bottom:5px;
 }
-/*
-  Panel tool icons
-*/
 .panel-heading i{
   float:right;
 }
@@ -12,7 +9,6 @@
   margin-top:-15px;
 }
 #tab-container{
-  
   padding-top:40px;
   margin-left: -15px;
 }
@@ -36,4 +32,7 @@
 }
 .ace-tm{
   margin-top:-18px;
+}
+.status-bar{
+  padding: 5px;
 }

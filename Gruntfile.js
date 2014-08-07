@@ -100,6 +100,6 @@ module.exports = function(grunt) {
   
   // Default task(s).
   grunt.registerTask('default', ['bowercopy','jshint','concat']);
-  grunt.registerTask('pack',['jshint']);
+  grunt.registerTask('hint',['jshint']);
   grunt.registerTask('bower',['bowercopy']);
 };

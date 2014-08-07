@@ -15,8 +15,10 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
     
     // Call the angular apply function to update the dom with the editor id
     this.$apply();
+    
     // Call the service to init the editor on the target div
     editorService.initEditor(fileId);
+    
     // Load the file content into the editor
     editorService.loadContent(fileId,fileContent);
   },$scope,editorService));
@@ -92,4 +94,9 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
   $rootScope.$on('file-openfolder',fsService.openFolder);
   $rootScope.$on('file-savefile',fsService.saveFile);
   $rootScope.$on('file-savefileas',fsService.saveFileAs);
+}]);
+
+//Define the status bar controller
+eyeApp.controller('eyeStatusBarController', ['$scope',function ($scope) {
+  
 }]);
