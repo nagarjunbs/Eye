@@ -8,10 +8,11 @@
   ],
   "dependencies": {
     "jquery": "2.x",
-    "angular":"1.2.x",
-    "bootstrap":"3.x",
-    "font-awesome":"4.x",
-    "ace-builds":"1.x",
-    "angular-bootstrap":"0.11.x"
+    "angular": "1.2.x",
+    "bootstrap": "3.x",
+    "font-awesome": "4.x",
+    "ace-builds": "1.x",
+    "angular-bootstrap": "0.11.x",
+    "qunit": "~1.14.0"
   }
 }

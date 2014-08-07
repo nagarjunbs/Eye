@@ -13,7 +13,7 @@ module.exports = function(grunt) {
       }
     },
     concat: {
-      js: {
+      'concat-js': {
         src: [
           // The libs
           'bower_components/ace-builds/src-min-noconflict/ace.js',
@@ -26,20 +26,28 @@ module.exports = function(grunt) {
           // App specific files
           'src/js/*.js'
         ],
-        dest: 'dist/built.js',
+        dest: 'dist/js/built.js',
       },
-      css:{
-        
+      'concat-css':{
+        src:[
+          // The libs
+          'bower_components/angular/angular-csp.css',
+          'bower_components/bootstrap/css/bootstrap.min.css',
+          'bower_components/font-awesome/css/font-awesome.min.css',
+          
+          //App specific files
+          'src/resources/app.css'
+        ],
+        dest:'dist/resources/css/build.css'
       }
     },
     bowercopy: {
-      // Javascript
-      js: {
+      //For Development
+      'copy-src-js': {
           options: {
               destPrefix: 'src/libs'
           },
           files: {
-            //For Development
               // jQuery
               'jquery': 'jquery/dist/*',
               
@@ -52,16 +60,33 @@ module.exports = function(grunt) {
               // Angular-bootstrap
               'angular-bootstrap':'angular-bootstrap/*.js',
               
-              // Font-Awesome
-              'font-awesome/css':'font-awesome/css/*',
-              'font-awesome/fonts':'font-awesome/fonts/*',
-              
               // Ace-Builds
               'ace':'ace-builds/src-noconflict/*'
-              
-            //For dist
           },
       },
+      'copy-src-css':{
+        options: {
+              destPrefix: 'src/libs'
+          },
+        files:{
+          // Font-Awesome
+          'font-awesome/css':'font-awesome/css/*',
+          'font-awesome/fonts':'font-awesome/fonts/*',
+        }
+      },
+      
+      //For Dist
+      'copy-dist-resources':{
+        options:{
+          destPrefix:'dist/resources/'
+        },
+        files:{
+          'fonts':[
+            'bower_components/font-awesome/fonts/*',
+            'bower_components/bootstrap/dist/fonts/*'
+          ]
+        }
+      }
     },
     watch: {
       files: ['<%= jshint.files %>'],
@@ -75,4 +100,6 @@ module.exports = function(grunt) {
   
   // Default task(s).
   grunt.registerTask('default', ['bowercopy','jshint','concat']);
+  grunt.registerTask('pack',['jshint']);
+  grunt.registerTask('bower',['bowercopy']);
 };
