@@ -17,10 +17,20 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
     this.$apply();
     
     // Call the service to init the editor on the target div
-    editorService.initEditor(fileId);
+    var editorObj = editorService.initEditor(fileId);
     
     // Load the file content into the editor
     editorService.loadContent(fileId,fileContent);
+    
+    // Add event handlers to the editor
+    editorObj.getSession().selection.on('changeCursor', $.proxy(function(editorObj) {
+      // Emit this event every time the cursor position changes
+      this.$emit('update-line-column-count',editorObj.selection.getCursor());
+    },this,editorObj));
+    
+    //Update the line#s in the status bar
+    this.$emit('update-line-column-count',editorObj.selection.getCursor());
+    
   },$scope,editorService));
   
   // Handle spawning new tabs through the service
@@ -97,6 +107,11 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
 }]);
 
 //Define the status bar controller
-eyeApp.controller('eyeStatusBarController', ['$scope',function ($scope) {
-  
+eyeApp.controller('eyeStatusBarController', ['$scope','$rootScope',function ($scope,$rootScope) {
+  // Listen to cursor changes and update the row and column numbers in teh status bar
+  $rootScope.$on('update-line-column-count',$.proxy(function(eventInfo, cursorObj){
+    $scope.rowNumber = cursorObj.row;
+    $scope.columnNumber = cursorObj.column;
+    $scope.$apply();
+  }),$scope);
 }]);

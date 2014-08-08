@@ -34,5 +34,14 @@
   margin-top:-18px;
 }
 .status-bar{
-  padding: 5px;
+  vertical-align:top;
+  padding:0;
+}
+.status-bar-cursor-position-container{
+  float:left;
+  margin-left:10px;
+}
+.status-bar-options{
+  float:right;
+  margin-right:10px;
 }

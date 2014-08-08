@@ -15,17 +15,16 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
       if (editorWidth===0 && editorHeight===0){
         //Set its height and width according to the screens resolution, we do this because ace expects absolute values for height and width
         editorWidth = editor.parent().width();
-        editorHeight = screen.height*89/100;
+        editorHeight = screen.height*88.5/100;
       }
       
       editor.css('width',editorWidth);
       editor.css('height',editorHeight);
-      
-      //Add event handlers
-      this.addEditorEventHandlers(editor);
-      
+
       // Maintain a mapping between the containerId and the actual aceeditor
       aceEditors[containerId] = aceEdit;
+      
+      return aceEdit;
     },
     // Helper function to load given content into the mapped ace editor
     loadContent:function(fileId,fileContent){
@@ -60,11 +59,6 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
         return fileName.replace(fileNameIdReplacePattern, '');
       else if (typeof fileName == 'number')
         return Math.floor(fileName);
-    },
-    addEditorEventHandlers:function(editor){
-      // Add event handlers to the editor
-      editor.on('change', function(e){
-      });
     }
   };
   return service;
