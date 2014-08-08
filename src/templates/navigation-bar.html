@@ -1,0 +1,15 @@
+<div class="container-fluid" data-ng-controller="eyeMenuController" id="menu-container">
+  <!-- Top Navbar -->
+  <div class="navbar-header row">
+    <i class="fa fa-eye"></i>
+    <!-- The menus -->
+    <span>
+      <span class="btn-group" data-ng-repeat="menu in menus">
+        <button class="btn btn-default" data-ng-click='handleMenuItemClick();' data-ng-if="menu['type']=='menuitem' && menu['name']" id="{{menu.id}}" target="_blank" href="" data-event="{{menu.event}}">
+          <i class="fa fa-{{menu['icon']}}"></i>
+        </button>
+        <span data-ng-if="menu['type']=='seperator'" class="menu-seperator"></span>
+    </span>
+    </span>
+  </div>
+</div>
