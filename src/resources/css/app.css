@@ -45,3 +45,7 @@
   float:right;
   margin-right:10px;
 }
+
+.status-bar-options .btn{
+  padding: 0;
+}

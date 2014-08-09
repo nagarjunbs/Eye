@@ -28,9 +28,6 @@ eyeApp.controller('eyeEditorController', ['$scope','$http','$rootScope','EditorS
       this.$emit('update-line-column-count',editorObj.selection.getCursor());
     },this,editorObj));
     
-    //Update the line#s in the status bar
-    this.$emit('update-line-column-count',editorObj.selection.getCursor());
-    
   },$scope,editorService));
   
   // Handle spawning new tabs through the service
@@ -108,6 +105,11 @@ eyeApp.controller('eyeMenuController', ['$scope','$http','$rootScope','FileSyste
 
 //Define the status bar controller
 eyeApp.controller('eyeStatusBarController', ['$scope','$rootScope',function ($scope,$rootScope) {
+  
+  //Init both of these to 0's
+  $scope.rowNumber = 0;
+  $scope.columnNumber = 0;
+  
   // Listen to cursor changes and update the row and column numbers in teh status bar
   $rootScope.$on('update-line-column-count',$.proxy(function(eventInfo, cursorObj){
     $scope.rowNumber = cursorObj.row;
