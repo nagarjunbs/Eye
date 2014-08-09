@@ -39,3 +39,22 @@ Installation:
 6. The sources are kept in the "src" directory while the deployable version is kept under the "dist" directory
 7. Load an upacked extension in chrome and point the path to Eye/src
 8. You are now ready to start hacking away
+
+Config files:
+===========
+1. menu.json      : Contains a complete listing of the items in the menu bar
+2. shortcuts.json : Contains shortcut keys and the events they emit 
+
+Events and their roles:
+============
+1. load-opened-file-content : Fired after a file selection window is spawned and a file is chosen. Handler is expected to take up the opened file ref and populate the editor window with a new ace editor.
+2. spawn-new-tab            : Fired after a file is open / a new file needs to be created. Handler is expected to create a bootstrap tab and init an ace editor on it.
+3. update-line-column-count : Fired whenever the status bars row and column # is to be updated. Expects an ace editor cursor object to complete this operation.
+4. menu-{event name}        : Menu events have the menu-{event name} pattern and are specified in the menu.json config file.
+
+File & folder organization:
+============
+1. /config        : All configuration JSON's are stored under the "config" folder
+2. /templates     : HTML templates for different sections of the page are segregated into this folder 
+3. Services.js    : Only reusable code is placed under the angular services layer, any function that requires angular scope doesnt belong in this file
+4. Controllers.js : Event handlers, general logic is placed here, services are invoked from this file
