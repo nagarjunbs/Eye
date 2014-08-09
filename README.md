@@ -26,7 +26,8 @@ Libraries
 3. Bootstrap
 4. Font-awesome
 5. Angular-Bootstrap
-
+6. Ace editor
+7. qunit
 
 Building Eye:
 ============
