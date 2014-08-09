@@ -1,0 +1,10 @@
+[
+  [
+    ["Ctrl","n"],
+    "create-new-file"
+  ],
+  [
+    ["Ctrl","o"],
+    "open-file"
+  ]
+]
