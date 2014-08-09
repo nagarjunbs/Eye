@@ -1,10 +1,10 @@
 [
-  [
-    ["Ctrl","n"],
-    "create-new-file"
-  ],
-  [
-    ["Ctrl","o"],
-    "open-file"
-  ]
+  {
+    "shortcut":["Ctrl","n"],
+    "event":"create-new-file"
+  },
+  {
+    "shortcut":["Ctrl","o"],
+    "event":"open-file"
+  }
 ]
