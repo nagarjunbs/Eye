@@ -28,7 +28,7 @@ Libraries
 5. Angular-Bootstrap
 
 
-Installation:
+Building Eye:
 ============
 1. Checkout the code via any git client
 2. Install NodeJS
