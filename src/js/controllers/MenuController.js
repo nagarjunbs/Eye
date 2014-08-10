@@ -11,9 +11,10 @@ eyeApp.controller('MenuController', ['$scope','$http','$rootScope','FileSystemSe
   // Handle clicks done on menu items
   $scope.handleMenuItemClick = function(){
     var clickedMenuItem = $(window.event.target);
+    var eventName = clickedMenuItem.data('event');
     //Check if this menu item has an event associated with it, if yes, broadcast it
-    if (typeof clickedMenuItem.data('event') === 'string'){
-      $rootScope.$emit(clickedMenuItem.data('event'));
+    if (angular.isString(eventName)){
+      $rootScope.$emit(eventName);
     }
   };
   

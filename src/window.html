@@ -13,13 +13,13 @@
   <!-- Templates for different chunks of the screen -->
   
   <!-- Top Navbar -->
-  <div class="navbar navbar-fixed-top" role="navigation" data-ng-include data-src="'partials/navigation-bar.html'"></div>
+  <div id="menu-container" class="navbar navbar-fixed-top" role="navigation" data-ng-controller="MenuController"  data-ng-include data-src="'partials/navigation-bar.html'"></div>
   
   <!-- Tabs for files and editors embedded within -->
-  <div id="tab-container" class="container-fluid" ng-controller="eyeEditorController" data-ng-include data-src="'partials/editor-area.html'"></div>
+  <div id="tab-container" class="container-fluid" ng-controller="EditorController" data-ng-include data-src="'partials/editor-area.html'"></div>
   
   <!-- Bottom status bar-->
-  <div class="well status-bar" ng-controller="eyeStatusBarController" data-ng-include data-src="'partials/status-bar.html'"></div>
+  <div class="well status-bar" ng-controller="StatusBarController" data-ng-include data-src="'partials/status-bar.html'"></div>
   
   <!-- Libraries -->
   <script src="libs/jquery/jquery.js"></script>
