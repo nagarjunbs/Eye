@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/FlyinPanda/Eye.svg?branch=master)](https://travis-ci.org/FlyinPanda/Eye)
-
+[![Code Climate](https://codeclimate.com/github/FlyinPanda/Eye/badges/gpa.svg)](https://codeclimate.com/github/FlyinPanda/Eye)
 Eye
 ===
 
