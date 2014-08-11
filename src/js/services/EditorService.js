@@ -1,4 +1,4 @@
-eyeApp.factory("EditorService",['$rootScope',function($rootScope){
+eyeApp.factory("EditorService",function(){
   // Init Ace
   var aceEditors = [],
       editorWidth = 0,
@@ -9,7 +9,7 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
     // Initialize the Ace editor
     initEditor:function(containerId){
       var aceEdit = ace.edit(containerId);
-  
+
       var editor = $('#' + containerId);
       // If this is the first time an editor is being rendered, calculate the height and width and cache it
       if (editorWidth===0 && editorHeight===0){
@@ -17,13 +17,13 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
         editorWidth = editor.parent().width();
         editorHeight = screen.height*88.5/100;
       }
-      
+
       editor.css('width',editorWidth);
       editor.css('height',editorHeight);
 
       // Maintain a mapping between the containerId and the actual aceeditor
       aceEditors[containerId] = aceEdit;
-      
+
       return aceEdit;
     },
     // Helper function to load given content into the mapped ace editor
@@ -40,7 +40,7 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
       $.each(openedDocuments,function(currentDoc){
         currentDoc.active = false;
       });
-      
+
       // Push in the newest opened document with active set to true
       openedDocuments.push({
         id:fileId,
@@ -62,4 +62,4 @@ eyeApp.factory("EditorService",['$rootScope',function($rootScope){
     }
   };
   return service;
-}]);
+});
