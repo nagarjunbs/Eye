@@ -12,7 +12,9 @@
     "bootstrap": "3.x",
     "font-awesome": "4.x",
     "ace-builds": "1.x",
-    "angular-bootstrap": "0.11.x",
-    "qunit": "~1.14.0"
+    "angular-bootstrap": "0.11.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.21"
   }
 }

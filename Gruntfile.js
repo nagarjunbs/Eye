@@ -88,9 +88,34 @@ module.exports = function(grunt) {
         }
       }
     },
+    /*Tests*/
+    jasmine: {
+      "unit-tests": {
+        src: [
+          'src/js/app.js',
+          'src/js/services/EditorService.js',
+          'src/js/controllers/EditorController.js',
+          'src/tests/controllers/EditorController.tests.js'
+        ],
+        options:{
+            vendor: [
+            'bower_components/jquery/dist/jquery.min.js',
+            
+            //Include unminified angular so that it emits proper errors if any
+            'bower_components/angular/angular.js',
+            'bower_components/bootstrap/dist/js/bootstrap.min.js',
+            'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+            'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+            'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/ace-builds/src-min-noconflict/ace.js'
+          ]
+        }
+      }
+    },
+    
     watch: {
       files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'qunit']
+      tasks: ['jshint']
     }
   });
 
