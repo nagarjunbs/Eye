@@ -3,7 +3,12 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: ['gruntfile.js', 'src/js/*.js'],
+      files: [
+        'gruntfile.js',
+        'src/js/*.js',
+        'src/tests/controllers/*.js',
+        'src/tests/services/*.js'
+      ],
       options: {
         globals: {
           jQuery: true,
@@ -115,7 +120,7 @@ module.exports = function(grunt) {
     
     watch: {
       files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      tasks: ['jasmine']
     }
   });
 
@@ -123,6 +128,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   
   // Default task(s).
   grunt.registerTask('default', ['bowercopy','jshint','concat']);
