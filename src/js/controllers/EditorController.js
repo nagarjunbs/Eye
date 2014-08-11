@@ -1,5 +1,5 @@
 // Define the editor controller
-eyeApp.controller('EditorController', ['$scope','$http','$rootScope','EditorService',function ($scope,$http,$rootScope,editorService) {
+eyeApp.controller('EditorController', ['$scope','$rootScope','EditorService',function ($scope,$rootScope,editorService) {
   
   $scope.openedDocuments = [];
   
